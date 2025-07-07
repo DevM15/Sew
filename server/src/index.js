@@ -21,7 +21,7 @@ app.use(cors({
 app.use(express.json());
 
 // Serve uploaded files
-app.use('/uploads', express.static(path.join(__dirname, "../", process.env.UPLOAD_DIR)));
+app.use('/uploads', express.static(path.join(__dirname, "../src", process.env.UPLOAD_DIR)));
 
 // API routes
 app.use('/api/rooms', roomRoutes);
