@@ -21,7 +21,16 @@ app.use(cors({
 app.use(express.json());
 
 // Serve uploaded files
-app.use('/uploads', express.static(path.join(__dirname, ".", process.env.UPLOAD_DIR)));
+// app.use('/uploads', express.static(path.join(__dirname, ".", process.env.UPLOAD_DIR)));
+
+app.get('/uploads/:filename', (req, res) => {
+  const filePath = path.join(__dirname, process.env.UPLOAD_DIR, req.params.filename);
+  res.download(filePath, req.params.filename, err => {
+    if (err) {
+      res.status(404).send("File not found");
+    }
+  });
+});
 
 // API routes
 app.use('/api/rooms', roomRoutes);
