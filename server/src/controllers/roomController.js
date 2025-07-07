@@ -135,7 +135,7 @@ exports.deleteFile = async (req, res) => {
     }
 
     // Delete file from filesystem
-    const filePath = path.join(__dirname, '..', '..', process.env.UPLOAD_DIR, file.filename);
+    const filePath = path.join(__dirname, '.', '.', process.env.UPLOAD_DIR, file.filename);
     await fs.unlink(filePath);
 
     // Remove file from room
