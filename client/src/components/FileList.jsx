@@ -54,7 +54,7 @@ function FileList({ files, onDelete }) {
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <div className="flex justify-end space-x-3">
                   <a
-                    href={`/uploads/${file.filename}`}
+                    href={`https://sew-p1h7.onrender.com/uploads/${file.filename}`}
                     download={file.originalName}
                     className="text-blue-600 hover:text-blue-900"
                     title="Download"
