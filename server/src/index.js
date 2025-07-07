@@ -23,7 +23,10 @@ app.use(express.json());
 // Serve uploaded files
 app.get('/uploads/:filename', (req, res) => {
   const filePath = path.join(__dirname, process.env.UPLOAD_DIR, req.params.filename);
-  res.download(filePath, req.params.filename, err => {
+  const fullFileName = req.params.filename;
+  const filename = fullFileName.replace(/^\d+-\d+-/, ''); 
+
+  res.download(filePath, filename, err => {
     if (err) {
       res.status(404).send("File not found");
     }
